@@ -12,25 +12,27 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="bg-gray-200 grid grid-areas-layout grid-cols-layout grid-rows-layout">
-        <Header />
-        {searchOpen ? (
-          <div
-            className="bg-black/20 w-full h-full grid-in-sidebar z-10"
-            onClick={() => setSearchOpen(false)}
-          />
-        ) : null}
-        {searchOpen ? (
-          <div
-            className="bg-black/20 w-full h-full grid-in-content z-10"
-            onClick={() => setSearchOpen(false)}
-          />
-        ) : null}
+      <div className="h-screen">
+        <div className="bg-gray-200 grid grid-areas-layout grid-cols-layout grid-rows-layout">
+          <Header />
+          {searchOpen ? (
+            <div
+              className="bg-black/20 w-full h-full grid-in-sidebar z-10"
+              onClick={() => setSearchOpen(false)}
+            />
+          ) : null}
+          {searchOpen ? (
+            <div
+              className="bg-black/20 w-full h-full grid-in-content z-10"
+              onClick={() => setSearchOpen(false)}
+            />
+          ) : null}
 
-        <Nav searchOpen={searchOpen} setSearchOpen={setSearchOpen} />
+          <Nav searchOpen={searchOpen} setSearchOpen={setSearchOpen} />
 
-        <Sidebar />
-        <Main />
+          <Sidebar />
+          <Main />
+        </div>
       </div>
     </>
   );
@@ -40,7 +42,7 @@ function Sidebar() {
   return (
     <aside className="grid-in-sidebar sticky top-0 self-start	py-28 ml-6">
       <ul className="space-y-3 hidden md:block">
-        {Array(30)
+        {Array(15)
           .fill(null)
           .map((item) => (
             <div key={item} className="bg-gray-300 rounded-lg h-6 w-full" />
@@ -117,7 +119,7 @@ function SearchResults() {
 
 function Main() {
   return (
-    <main className="grid-in-content ml-10 mr-6 space-y-6 my-12 ">
+    <main className="grid-in-content ml-10 mr-6 space-y-6 pt-12 ">
       <h2 className="text-4xl font-bold">TailwindCSS + React</h2>
       <ItemGrid />
     </main>

@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 .h-search {
-    max-height: calc(100vh - (300% + 0px));
+    max-height: calc(100vh - (100% + 60px));
 }
