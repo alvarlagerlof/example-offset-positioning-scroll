@@ -117,7 +117,7 @@ function SearchResults() {
 
 function Main() {
   return (
-    <main className="grid-in-content ml-10 mr-6 space-y-6 pt-12 ">
+    <main className="grid-in-content ml-10 mr-6 space-y-6 my-12 ">
       <h2 className="text-4xl font-bold">TailwindCSS + React</h2>
       <ItemGrid />
     </main>
