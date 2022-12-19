@@ -13,7 +13,7 @@ module.exports = {
         layout: "180px 1fr",
       },
       gridTemplateRows: {
-        layout: "auto 1fr",
+        layout: "min-content min-content 1fr",
       },
     },
   },

@@ -12,7 +12,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="bg-gray-200 h-screen grid grid-areas-layout grid-cols-layout grid-rows-layout">
+      <div className="bg-gray-200 grid grid-areas-layout grid-cols-layout grid-rows-layout">
         <Header />
         {searchOpen ? (
           <div
@@ -38,9 +38,9 @@ export default function Home() {
 
 function Sidebar() {
   return (
-    <aside className="grid-in-sidebar sticky top-0 pt-12">
+    <aside className="grid-in-sidebar sticky top-0 self-start	py-28 ml-6">
       <ul className="space-y-3 hidden md:block">
-        {Array(15)
+        {Array(30)
           .fill(null)
           .map((item) => (
             <div key={item} className="bg-gray-300 rounded-lg h-6 w-full" />
@@ -117,7 +117,7 @@ function SearchResults() {
 
 function Main() {
   return (
-    <main className="grid-in-content p-8 space-y-8 pt-12 ">
+    <main className="grid-in-content ml-10 mr-6 space-y-6 pt-12 ">
       <h2 className="text-4xl font-bold">TailwindCSS + React</h2>
       <ItemGrid />
     </main>
@@ -127,7 +127,7 @@ function Main() {
 function ItemGrid() {
   return (
     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
-      {Array(100)
+      {Array(56)
         .fill(null)
         .map((item) => (
           <div key={item} className="bg-gray-100 rounded-lg aspect-square" />
