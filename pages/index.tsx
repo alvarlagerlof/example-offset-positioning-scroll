@@ -36,7 +36,7 @@ function Nav() {
   const [searchOpen, setSearchOpen] = useState(false);
 
   return (
-    <nav className="bg-white px-6 py-3 flex flex-row justify-between space-x-32 items-center sticky top-0 shadow">
+    <nav className="bg-white px-6 py-3 flex flex-row justify-between space-x-4 sm:space-x-8 md:space-x-32 items-center sticky top-0 shadow">
       <h1>Name goes here</h1>
       <div className="flex-1 h-full top-0">
         <div className="relative">
@@ -109,7 +109,7 @@ function Main() {
 
 function ItemGrid() {
   return (
-    <div className="grid grid-cols-4 gap-2">
+    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
       {Array(100)
         .fill(null)
         .map((item) => (
