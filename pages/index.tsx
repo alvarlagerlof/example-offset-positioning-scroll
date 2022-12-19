@@ -1,10 +1,9 @@
 import Head from "next/head";
-import { Inter } from "@next/font/google";
 import { useState } from "react";
 
-const inter = Inter({ subsets: ["latin"] });
-
 export default function Home() {
+  const [searchOpen, setSearchOpen] = useState(false);
+
   return (
     <>
       <Head>
@@ -13,30 +12,55 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className={inter.className}>
-        <div className="max-h-screen overflow-hidden bg-gray-200">
-          <Header />
-          <Nav />
-          <Main />
-        </div>
+      <div className="bg-gray-200 h-screen grid grid-areas-layout grid-cols-layout grid-rows-layout">
+        <Header />
+        {searchOpen ? (
+          <div
+            className="bg-black/20 w-full h-full grid-in-sidebar z-10"
+            onClick={() => setSearchOpen(false)}
+          />
+        ) : null}
+        {searchOpen ? (
+          <div
+            className="bg-black/20 w-full h-full grid-in-content z-10"
+            onClick={() => setSearchOpen(false)}
+          />
+        ) : null}
+
+        <Nav searchOpen={searchOpen} setSearchOpen={setSearchOpen} />
+
+        <Sidebar />
+        <Main />
       </div>
     </>
   );
 }
 
+function Sidebar() {
+  return (
+    <aside className="grid-in-sidebar sticky top-0 pt-12">
+      <ul className="space-y-3 hidden md:block">
+        {Array(15)
+          .fill(null)
+          .map((item) => (
+            <div key={item} className="bg-gray-300 rounded-lg h-6 w-full" />
+          ))}
+      </ul>
+    </aside>
+  );
+}
+
 function Header() {
   return (
-    <header className="bg-gray-800 text-white px-6 py-2">
+    <header className="grid-in-header bg-gray-800 text-white px-6 py-2">
       <span>This is a banner</span>
     </header>
   );
 }
 
-function Nav() {
-  const [searchOpen, setSearchOpen] = useState(false);
-
+function Nav({ searchOpen, setSearchOpen }) {
   return (
-    <nav className="bg-white px-6 py-3 flex flex-row justify-between space-x-4 sm:space-x-8 md:space-x-32 items-center sticky top-0 shadow">
+    <nav className="grid-in-nav z-20 bg-white px-6 py-3 flex flex-row justify-between space-x-4 sm:space-x-8 md:space-x-32 items-center sticky top-0 shadow">
       <h1>Name goes here</h1>
       <div className="flex-1 h-full top-0">
         <div className="relative">
@@ -47,16 +71,9 @@ function Nav() {
           />
 
           {searchOpen ? (
-            <>
-              <div
-                className="bg-black/20 w-full h-full left-0 fixed top-0"
-                onClick={() => setSearchOpen(false)}
-              />
-
-              <ul className="bg-white px-3 py-4 rounded-lg w-96 absolute mt-2 overflow-y-scroll h-search">
-                <SearchResults />
-              </ul>
-            </>
+            <div className="bg-white px-3 py-4 rounded-lg w-96 absolute mt-2 overflow-y-scroll h-search">
+              <SearchResults />
+            </div>
           ) : null}
         </div>
       </div>
@@ -100,7 +117,7 @@ function SearchResults() {
 
 function Main() {
   return (
-    <main className="p-8 space-y-8 pt-12 overflow-y-scroll">
+    <main className="grid-in-content p-8 space-y-8 pt-12 ">
       <h2 className="text-4xl font-bold">TailwindCSS + React</h2>
       <ItemGrid />
     </main>
