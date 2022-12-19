@@ -33,11 +33,11 @@ function Header() {
 }
 
 function Nav() {
-  const [searchOpen, setSearchOpen] = useState(true);
+  const [searchOpen, setSearchOpen] = useState(false);
 
   return (
     <nav className="bg-white px-6 py-3 flex flex-row justify-between space-x-32 items-center sticky top-0 shadow">
-      <h1>Company name</h1>
+      <h1>Name goes here</h1>
       <div className="flex-1 h-full top-0">
         <div className="relative">
           <input
@@ -100,7 +100,7 @@ function SearchResults() {
 
 function Main() {
   return (
-    <main className="p-8 space-y-8 mt-12 overflow-y-scroll">
+    <main className="p-8 space-y-8 pt-12 overflow-y-scroll">
       <h2 className="text-4xl font-bold">TailwindCSS + React</h2>
       <ItemGrid />
     </main>
