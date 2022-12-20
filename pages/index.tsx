@@ -13,7 +13,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="h-screen">
-        <div className="bg-gray-200 grid grid-areas-layout grid-cols-layout grid-rows-layout">
+        <div className="bg-gray-200 grid grid-areas-layout grid-cols-layout grid-rows-layout h-screen">
           <Header />
           {searchOpen ? (
             <div
@@ -60,7 +60,13 @@ function Header() {
   );
 }
 
-function Nav({ searchOpen, setSearchOpen }) {
+function Nav({
+  searchOpen,
+  setSearchOpen,
+}: {
+  searchOpen: boolean;
+  setSearchOpen: (searchOpen: boolean) => void;
+}) {
   return (
     <nav className="grid-in-nav z-20 bg-white px-6 py-3 flex flex-row justify-between space-x-4 sm:space-x-8 md:space-x-32 items-center sticky top-0 shadow">
       <h1>Name goes here</h1>
@@ -89,7 +95,7 @@ function Nav({ searchOpen, setSearchOpen }) {
 
 function SearchResults() {
   return (
-    <ul className="space-y-4">
+    <ul className="space-y-4 sticky top-24">
       <li>Result with quite a long title</li>
       <li>Another with quite a long title</li>
       <li>A third with quite a long title</li>
@@ -119,7 +125,7 @@ function SearchResults() {
 
 function Main() {
   return (
-    <main className="grid-in-content ml-10 mr-6 space-y-6 pt-12 ">
+    <main className="grid-in-content ml-10 mr-6 space-y-6 pt-12 h-screen overflow-y-auto">
       <h2 className="text-4xl font-bold">TailwindCSS + React</h2>
       <ItemGrid />
     </main>
